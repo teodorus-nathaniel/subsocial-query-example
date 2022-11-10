@@ -1,4 +1,4 @@
-import queryClient from '../client'
+import queryClient from '../services/client'
 import { QueryConfig } from './types'
 
 export function poolFunctionWrapper<Param, SingleReturn>(

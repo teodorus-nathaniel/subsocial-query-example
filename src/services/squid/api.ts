@@ -1,5 +1,5 @@
 import { request } from 'graphql-request'
-import { poolFunctionWrapper } from '../common/base'
+import { poolFunctionWrapper } from '../../packages/base'
 import { GetPostParam } from '../types'
 import * as q from './gql'
 

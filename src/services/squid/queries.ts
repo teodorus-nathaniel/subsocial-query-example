@@ -1,4 +1,4 @@
-import { createQueryInvalidation } from '../common/base'
+import { createQueryInvalidation } from '../../packages/base'
 import { QueryConfig } from '../common/types'
 import { GetPostParam } from '../types'
 import { getPost } from './api'

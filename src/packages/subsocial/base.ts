@@ -1,7 +1,7 @@
 import { SubsocialApi } from '@subsocial/api'
 import { useQuery } from 'react-query'
-import { generateQueryWrapper, mergeQueryConfig } from '../common/base'
-import { QueryConfig } from '../common/types'
+import { generateQueryWrapper, mergeQueryConfig } from '../base'
+import { QueryConfig } from '../types'
 import { getSubsocialApi } from './connection'
 
 export const subsocialQueryWrapper = generateQueryWrapper(async () => null)

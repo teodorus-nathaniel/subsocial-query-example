@@ -1,5 +1,5 @@
 import { useQuery } from 'react-query'
-import { generateQueryWrapper, mergeQueryConfig } from '../common/base'
+import { generateQueryWrapper, mergeQueryConfig } from '../../packages/base'
 import { QueryConfig } from '../common/types'
 
 export const squidQueryWrapper = generateQueryWrapper(async () => null)

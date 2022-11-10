@@ -1,5 +1,5 @@
 import { SubsocialApi } from '@subsocial/api'
-import { poolFunctionWrapper } from '../common/base'
+import { poolFunctionWrapper } from '../../packages/base'
 import { GetPostParam } from '../types'
 
 export const getPost = poolFunctionWrapper(
