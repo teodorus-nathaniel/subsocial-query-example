@@ -1,5 +1,5 @@
 import { Hash } from '@polkadot/types/interfaces'
-import { UseMutationOptions, UseQueryOptions } from 'react-query'
+import { UseMutationOptions, UseQueryOptions } from '@tanstack/react-query'
 
 export type QueryConfig<T = any, V = any> = Omit<
   UseQueryOptions<T, unknown, T, (string | V | null)[]>,

@@ -1,6 +1,6 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 import { generateQueryWrapper, mergeQueryConfig } from '../../packages/base'
-import { QueryConfig } from '../common/types'
+import { QueryConfig } from '../../packages/types'
 
 export const squidQueryWrapper = generateQueryWrapper(async () => null)
 

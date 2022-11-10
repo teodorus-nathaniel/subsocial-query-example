@@ -1,5 +1,5 @@
 import { createQueryInvalidation } from '../../packages/base'
-import { QueryConfig } from '../common/types'
+import { QueryConfig } from '../../packages/types'
 import { GetPostParam } from '../types'
 import { getPost } from './api'
 import { useSquidQuery } from './base'

@@ -1,5 +1,5 @@
 import { SubsocialApi } from '@subsocial/api'
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 import { generateQueryWrapper, mergeQueryConfig } from '../base'
 import { QueryConfig } from '../types'
 import { getSubsocialApi } from './connection'
