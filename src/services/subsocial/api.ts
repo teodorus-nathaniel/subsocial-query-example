@@ -1,8 +1,8 @@
 import { SubsocialApi } from '@subsocial/api'
-import { poolQueryFunction } from '../../packages/base'
+import poolQuery from 'pool-query'
 import { GetPostParam } from '../types'
 
-export const getPost = poolQueryFunction({
+export const getPost = poolQuery({
   singleCall: async ({
     additionalData: api,
     params,

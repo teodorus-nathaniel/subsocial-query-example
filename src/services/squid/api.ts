@@ -1,9 +1,9 @@
 import { request } from 'graphql-request'
-import { poolQueryFunction } from '../../packages/base'
+import poolQuery from 'pool-query'
 import { GetPostParam } from '../types'
 import * as q from './gql'
 
-export const getPost = poolQueryFunction({
+export const getPost = poolQuery({
   multiCall: async (allParams: { params: GetPostParam }[]) => {
     const res = await request(
       'https://squid.subsquid.io/subsocial/graphql',
