@@ -1,9 +1,9 @@
 import { SubsocialApi } from '@subsocial/api'
-import { poolFunctionWrapper } from '../../packages/base'
+import { poolQueryFunction } from '../../packages/base'
 import { GetPostParam } from '../types'
 
-export const getPost = poolFunctionWrapper(
-  async ({
+export const getPost = poolQueryFunction({
+  singleCall: async ({
     additionalData: api,
     params,
   }: {
@@ -12,10 +12,13 @@ export const getPost = poolFunctionWrapper(
   }) => {
     return api.findPost({ id: params.postId })
   },
-  async (allParams) => {
+  multiCall: async (allParams) => {
     const [{ additionalData: api }] = allParams
     const postIds = allParams.map(({ params: { postId } }) => postId)
     return api.findPublicPosts(postIds)
   },
-  250
-)
+  resultMapper: {
+    paramToKey: (param) => param.params.postId,
+    resultToKey: (result) => result?.id ?? '',
+  },
+})

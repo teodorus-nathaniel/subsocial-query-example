@@ -1,18 +1,10 @@
 import { request } from 'graphql-request'
-import { poolFunctionWrapper } from '../../packages/base'
+import { poolQueryFunction } from '../../packages/base'
 import { GetPostParam } from '../types'
 import * as q from './gql'
 
-export const getPost = poolFunctionWrapper(
-  async ({ params }: { params: GetPostParam }) => {
-    const res = await request(
-      'https://squid.subsquid.io/subsocial/graphql',
-      q.GET_POSTS_DATA,
-      { where: { id_in: [params.postId] } }
-    )
-    return res.posts[0]
-  },
-  async (allParams) => {
+export const getPost = poolQueryFunction({
+  multiCall: async (allParams: { params: GetPostParam }[]) => {
     const res = await request(
       'https://squid.subsquid.io/subsocial/graphql',
       q.GET_POSTS_DATA,
@@ -20,5 +12,8 @@ export const getPost = poolFunctionWrapper(
     )
     return res.posts
   },
-  250
-)
+  // resultMapper: {
+  //   paramToKey: (param) => param.params.postId,
+  //   resultToKey: (result) => result.
+  // }
+})

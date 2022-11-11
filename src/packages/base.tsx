@@ -1,45 +1,75 @@
 import queryClient from '../services/client'
 import { QueryConfig } from './types'
 
-export function poolFunctionWrapper<Param, SingleReturn>(
-  func: (params: Param) => Promise<SingleReturn>,
-  multiFunc: (params: Param[]) => Promise<SingleReturn[]>,
-  waitTime: number
+export interface PoolQueryFunctionConfig<Param, SingleReturn> {
+  multiCall: (params: Param[]) => Promise<SingleReturn[]>
+  resultMapper?: {
+    resultToKey: (result: SingleReturn) => string
+    paramToKey: (param: Param) => string
+  }
+  singleCall?: (params: Param) => Promise<SingleReturn>
+  waitTime?: number
+}
+
+export function poolQueryFunction<Param, SingleReturn>(
+  config: PoolQueryFunctionConfig<Param, SingleReturn>
 ) {
+  const { multiCall, singleCall, waitTime = 250, resultMapper } = config
   let queryPool: Param[] = []
   let timeout: number | undefined
 
-  let batchResolver: (
-    value: SingleReturn[] | PromiseLike<SingleReturn[]>
-  ) => void
-  let batchPromise = new Promise<SingleReturn[]>((resolve) => {
+  type BatchData =
+    | SingleReturn[]
+    | {
+        [key: string]: SingleReturn
+      }
+
+  let batchResolver: (value: BatchData | PromiseLike<BatchData>) => void
+  let batchPromise = new Promise<BatchData>((resolve) => {
     batchResolver = resolve
   })
 
   const later = async function () {
     timeout = undefined
-    let result: Promise<SingleReturn[]>
-    if (multiFunc && queryPool.length > 1) {
-      result = multiFunc(queryPool)
-    } else {
+    let response: Promise<SingleReturn[]>
+    if (singleCall && queryPool.length === 1) {
       const queries = queryPool.map((singleParam) => {
-        return func(singleParam)
+        return singleCall(singleParam)
       })
-      result = Promise.all(queries)
+      response = Promise.all(queries)
+    } else {
+      response = multiCall(queryPool)
     }
-    const awaitedResult = await result
+    const resultArray = await response
+
+    let result: { [key: string]: SingleReturn } | SingleReturn[] = resultArray
+    if (resultMapper) {
+      const resultMap: { [key: string]: SingleReturn } = {}
+      resultArray.forEach((singleResult) => {
+        const key = resultMapper.resultToKey(singleResult)
+        resultMap[key] = singleResult
+      })
+      result = resultMap
+    }
     queryPool = []
-    batchResolver(awaitedResult)
+    batchResolver(result)
   }
 
-  return async function executedFunction(param: Param): Promise<SingleReturn> {
+  return async function executedFunction(
+    param: Param
+  ): Promise<SingleReturn | undefined> {
     let currentIndex = queryPool.length
     queryPool.push(param)
     window.clearTimeout(timeout)
     timeout = window.setTimeout(later, waitTime)
 
     const result = await batchPromise
-    return result[currentIndex]
+    if (Array.isArray(result)) {
+      return result[currentIndex]
+    } else {
+      const key = resultMapper?.paramToKey(param)
+      return key ? result[key] : undefined
+    }
   }
 }
 
@@ -75,8 +105,11 @@ export function mergeQueryConfig<T, V>(
 }
 
 export function createQueryInvalidation<Param>(key: string) {
-  return (data: Param | null = null) => {
-    queryClient.invalidateQueries([key, data])
+  return (data: Param | null = null, exact = false) => {
+    queryClient.invalidateQueries({
+      queryKey: [key, data],
+      exact,
+    })
   }
 }
 
