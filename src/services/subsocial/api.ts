@@ -4,21 +4,21 @@ import { GetPostParam } from '../types'
 
 export const getPost = poolQuery({
   singleCall: async ({
-    additionalData: api,
-    params,
+    api,
+    data,
   }: {
-    params: GetPostParam
-    additionalData: SubsocialApi
+    data: GetPostParam
+    api: SubsocialApi
   }) => {
-    return api.findPost({ id: params.postId })
+    return api.findPost({ id: data.postId })
   },
   multiCall: async (allParams) => {
-    const [{ additionalData: api }] = allParams
-    const postIds = allParams.map(({ params: { postId } }) => postId)
+    const [{ api }] = allParams
+    const postIds = allParams.map(({ data: { postId } }) => postId)
     return api.findPublicPosts(postIds)
   },
   resultMapper: {
-    paramToKey: (param) => param.params.postId,
+    paramToKey: (param) => param.data.postId,
     resultToKey: (result) => result?.id ?? '',
   },
 })

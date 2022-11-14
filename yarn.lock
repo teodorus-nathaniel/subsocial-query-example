@@ -4953,10 +4953,10 @@ strip-markdown@^4.0.0:
   resolved "https://registry.npmjs.org/strip-markdown/-/strip-markdown-4.2.0.tgz"
   integrity sha512-sZYHI1KoKOOBfIq78R3E62NHg7kk6aKtZSqiH7wWxFB6Ak6PTZe4N88aJnzjV00Lbfw91oyLpy3baYfTTqNYBA==
 
-subsocial-query1@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/subsocial-query1/-/subsocial-query1-1.0.1.tgz#a8944f9821242e30ded6af9c8174bf604a31404d"
-  integrity sha512-F91zucDs7Ld/cXhT/kR9gIzoLNR7Skvc/HPqWYPHKGqx4mi+wLhQRvB4vFetyFw3lG06EuX4juHfR9TcYgegIA==
+subsocial-query1@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/subsocial-query1/-/subsocial-query1-1.0.7.tgz#6cc73a87944f5a1eab1ac571d55aa14af8dd495d"
+  integrity sha512-ou/H0P5jzESyXAUqh21uD8wCCmcPPavq8AHpuOsQ8hrCSO/2p9XYxNqC26JOMUQlvZqgLrcw7XvjYmGZlvcVfA==
   dependencies:
     pool-query "^1.1.6"
 
