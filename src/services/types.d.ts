@@ -35,7 +35,7 @@ export type GetReplyIdsByPostIdParam = {
 export type GetBatchReplyIdsByPostIdsParam = {
   postIds: string[]
 }
-export type GetPostParam = {
+export type GetPostData = {
   postId: string
 }
 export type GetRepliesParam = {

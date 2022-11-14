@@ -1,15 +1,9 @@
-import { SubsocialApi } from '@subsocial/api'
 import poolQuery from 'pool-query'
-import { GetPostParam } from '../types'
+import { SubsocialParam } from 'subsocial-query1'
+import { GetPostData } from '../types'
 
 export const getPost = poolQuery({
-  singleCall: async ({
-    api,
-    data,
-  }: {
-    data: GetPostParam
-    api: SubsocialApi
-  }) => {
+  singleCall: async ({ api, data }: SubsocialParam<GetPostData>) => {
     return api.findPost({ id: data.postId })
   },
   multiCall: async (allParams) => {
