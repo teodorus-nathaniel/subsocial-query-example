@@ -1,5 +1,5 @@
 import { request } from 'graphql-request'
-import poolQuery from 'pool-query'
+import { poolQuery } from 'subsocial-query1'
 import { GetPostParam } from '../types'
 import * as q from './gql'
 
