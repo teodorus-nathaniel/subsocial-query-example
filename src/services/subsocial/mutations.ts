@@ -13,9 +13,9 @@ export function useCreateSpace(config?: MutationConfig<CreateSpacePayload>) {
         imageCid = await api.ipfs.saveFile(image)
       }
       const spaceCid = await api.ipfs.saveContent({
-        name,
-        about,
-        image: imageCid,
+        name: name || '',
+        about: about || '',
+        image: imageCid || null,
       })
       const substrateApi = await api.substrateApi
       const tx = substrateApi.tx.spaces.createSpace(IpfsContent(spaceCid), null)
