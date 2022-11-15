@@ -1,5 +1,7 @@
 import { QueryClient } from '@tanstack/react-query'
-import { createQueryInvalidation } from 'subsocial-query1'
+import { createQueryInvalidation, setSubsocialConfig } from 'subsocial-query1'
+
+setSubsocialConfig('staging')
 
 const queryClient = new QueryClient({
   defaultOptions: {

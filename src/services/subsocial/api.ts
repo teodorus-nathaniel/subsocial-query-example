@@ -1,8 +1,6 @@
 import poolQuery from 'pool-query'
-import { setSubsocialConfig, SubsocialParam } from 'subsocial-query1'
+import { SubsocialParam } from 'subsocial-query1'
 import { GetPostData } from '../types'
-
-setSubsocialConfig('prod')
 
 export const getPost = poolQuery({
   singleCall: async ({ api, data }: SubsocialParam<GetPostData>) => {

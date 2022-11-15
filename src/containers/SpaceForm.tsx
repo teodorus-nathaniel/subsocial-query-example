@@ -15,7 +15,7 @@ export default function SpaceForm() {
         wallet. This is not good for production, please change the code for that
         according to your needs.
       </p>
-      <button onClick={() => createSpace(dummySpace)}>
+      <button className='button' onClick={() => createSpace(dummySpace)}>
         Create Dummy Space
       </button>
     </div>

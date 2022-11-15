@@ -18,9 +18,13 @@ function App() {
         <PostsMultipleLoading />
       </div>
 
-      <Invalidation />
+      <div style={{ marginBottom: '5rem' }}>
+        <Invalidation />
+      </div>
 
-      <SpaceForm />
+      <div style={{ marginBottom: '5rem' }}>
+        <SpaceForm />
+      </div>
     </div>
   )
 }

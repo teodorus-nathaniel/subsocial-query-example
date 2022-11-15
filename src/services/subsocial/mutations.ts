@@ -1,4 +1,4 @@
-import { IpfsContent } from '@subsocial/types/substrate/classes'
+import { IpfsContent } from '@subsocial/api/substrate/wrappers'
 import { MutationConfig, useSubsocialMutation } from 'subsocial-query1'
 import { getWallet } from '../../utils/wallet'
 import { CreateSpacePayload } from '../types'
@@ -16,7 +16,7 @@ export function useCreateSpace(config?: MutationConfig<CreateSpacePayload>) {
         name,
         about,
         image: imageCid,
-      } as any)
+      })
       const substrateApi = await api.substrateApi
       const tx = substrateApi.tx.spaces.createSpace(IpfsContent(spaceCid), null)
       return { tx, summary: `Creating Space ${name}` }
