@@ -8,7 +8,10 @@ function App() {
   return (
     <div className='App'>
       <p style={{ marginBottom: '2rem' }}>
-        Note: To track api calls, you can see logs in console
+        Notes: <br />
+        - To track api calls, you can see logs in console <br />
+        - Current example is using Subsocial SDK. You can try to use squid by
+        changing `useGetPost` to `useGetPostSquid` <br />
       </p>
 
       <div style={{ marginBottom: '5rem' }}>

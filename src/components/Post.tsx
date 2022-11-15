@@ -2,14 +2,14 @@ import { useGetPost } from '../services/subsocial/queries'
 
 export default function Post({ id }: { id: string }) {
   const { data: post, isLoading } = useGetPost({ postId: id })
+  const title = post?.content?.title
+  const body = post?.content?.body
   return (
     <div className={`post ${isLoading ? 'skeleton' : ''}`}>
-      {post && (
-        <div className='flex flex-col'>
-          <h2>{post.content?.title}</h2>
-          <p>{post.content?.body}</p>
-        </div>
-      )}
+      <div className='flex flex-col'>
+        {title && <h2 style={{ marginBottom: body ? '.5rem' : 0 }}>{title}</h2>}
+        {body && <p>{body}</p>}
+      </div>
     </div>
   )
 }
