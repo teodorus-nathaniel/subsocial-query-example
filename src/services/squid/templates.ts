@@ -1,4 +1,4 @@
-import { graphql } from '../../gql'
+import { graphql } from './gql'
 
 export const POST_SIMPLE_FRAGMENT = graphql(`
   fragment PostSimpleFragment on Post {

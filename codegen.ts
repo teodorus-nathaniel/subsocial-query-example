@@ -5,7 +5,7 @@ const config: CodegenConfig = {
   schema: 'https://squid.subsquid.io/subsocial/graphql',
   documents: 'src/**/*.ts',
   generates: {
-    'src/gql/': {
+    'src/services/squid/gql/': {
       preset: 'client',
       plugins: [],
     },
