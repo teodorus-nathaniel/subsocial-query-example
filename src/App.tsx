@@ -1,24 +1,23 @@
 import './App.css'
-import ComponentA from './components/ComponentA'
-import { invalidateGetPost } from './services/subsocial/queries'
+import Invalidation from './containers/Invalidation'
+import PostsMultipleLoading from './containers/PostsMultipleLoading'
+import PostsSingleLoading from './containers/PostsSingleLoading'
 
 function App() {
   return (
     <div className='App'>
-      <ComponentA id='100' />
-      <ComponentA id='200' />
-      <ComponentA id='300' />
-      <ComponentA id='4' />
-      <ComponentA id='5' />
-      <ComponentA id='6' />
+      <p style={{ marginBottom: '2rem' }}>
+        Note: To track api calls, you can see logs in console
+      </p>
 
-      <button
-        onClick={() => {
-          invalidateGetPost({ postId: 'dialga' })
-          invalidateGetPost({ postId: 'bulbasaur' })
-        }}>
-        invalidate
-      </button>
+      <div style={{ marginBottom: '5rem' }}>
+        <PostsSingleLoading />
+      </div>
+      <div style={{ marginBottom: '5rem' }}>
+        <PostsMultipleLoading />
+      </div>
+
+      <Invalidation />
     </div>
   )
 }
