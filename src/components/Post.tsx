@@ -1,8 +1,7 @@
 import { useGetPost } from '../services/subsocial/queries'
 
 export default function Post({ id }: { id: string }) {
-  const { data: post, isLoading, error } = useGetPost({ postId: id })
-  console.log(error)
+  const { data: post, isLoading } = useGetPost({ postId: id })
   return (
     <div className={`post ${isLoading ? 'skeleton' : ''}`}>
       {post && (

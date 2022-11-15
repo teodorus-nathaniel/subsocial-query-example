@@ -15,12 +15,11 @@ export default function PostsMultipleLoading() {
         which results in only 1 call.
       </p>
       <div className='post-container'>
-        <Post id='21' />
-        <Post id='22' />
-        <Post id='23' />
-        <Post id='24' />
-        <Post id='25' />
-        <Post id='26' />
+        <Post id='6' />
+        <Post id='7' />
+        <Post id='8' />
+        <Post id='9' />
+        <Post id='10' />
       </div>
     </div>
   )
