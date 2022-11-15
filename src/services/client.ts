@@ -1,16 +1,8 @@
 import { QueryClient } from '@tanstack/react-query'
-import { createQueryInvalidation, setSubsocialConfig } from 'subsocial-query1'
+import { createQueryInvalidation } from 'subsocial-query1'
+import initSubsocialConfig from './subsocial/init'
 
-setSubsocialConfig('staging')
-// setSubsocialConfig('prod', {
-//   postConnectConfig: (api) => {
-//     const mnemonic = '' // CRUST MNEMONIC
-//     const authHeader = generateCrustAuthToken(mnemonic)
-//     api.ipfs.setWriteHeaders({
-//       authorization: 'Basic ' + authHeader,
-//     })
-//   },
-// })
+initSubsocialConfig()
 
 const queryClient = new QueryClient({
   defaultOptions: {
