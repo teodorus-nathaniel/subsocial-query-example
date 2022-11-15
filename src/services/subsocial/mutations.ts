@@ -12,6 +12,7 @@ export function useCreateSpace(config?: MutationConfig<CreateSpacePayload>) {
       if (image) {
         imageCid = await api.ipfs.saveFile(image)
       }
+      // saveContent can't have undefined in its body.
       const spaceCid = await api.ipfs.saveContent({
         name: name || '',
         about: about || '',
