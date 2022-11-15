@@ -1,7 +1,7 @@
 import { graphql } from './gql'
 
-export const POST_SIMPLE_FRAGMENT = graphql(`
-  fragment PostSimpleFragment on Post {
+export const POST_SIMPLE = graphql(`
+  fragment PostSimple on Post {
     content
     createdAtBlock
     createdAtTime
@@ -38,9 +38,9 @@ export const POST_SIMPLE_FRAGMENT = graphql(`
   }
 `)
 
-export const POST_FRAGMENT = graphql(`
-  fragment PostFragment on Post {
-    ...PostSimpleFragment
+export const POST_FULL = graphql(`
+  fragment PostFull on Post {
+    ...PostSimple
   }
 `)
 
@@ -50,12 +50,12 @@ export const POST_FRAGMENT = graphql(`
 export const GET_POSTS_DATA = graphql(`
   query GetPostsData($where: PostWhereInput) {
     posts(where: $where) {
-      ...PostFragment
+      ...PostFull
       sharedPost {
-        ...PostFragment
+        ...PostFull
       }
       parentPost {
-        ...PostFragment
+        ...PostFull
       }
     }
   }

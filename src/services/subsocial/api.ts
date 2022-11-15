@@ -9,7 +9,8 @@ export const getPost = poolQuery({
   multiCall: async (allParams) => {
     const [{ api }] = allParams
     const postIds = allParams.map(({ data: { postId } }) => postId)
-    return api.findPublicPosts(postIds)
+    const res = await api.findPublicPosts(postIds)
+    return res
   },
   resultMapper: {
     paramToKey: (param) => param.data.postId,

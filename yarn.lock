@@ -4499,10 +4499,10 @@ picomatch@^2.0.4, picomatch@^2.2.1, picomatch@^2.3.1:
   resolved "https://registry.npmjs.org/picomatch/-/picomatch-2.3.1.tgz"
   integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
 
-pool-query@^1.1.6:
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/pool-query/-/pool-query-1.1.6.tgz#10bfd766a5105989cbaa9d76d1876f2dffaa5771"
-  integrity sha512-Ybp3lGodwxNZsF+ZW+4nT353b3qYe2jxsAHyV+apuEsatXChNWVt73tQa7m145KobnXRrcYz4cRxheTJMEnOMg==
+pool-query@^1.1.9:
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/pool-query/-/pool-query-1.1.9.tgz#7f9e07106abe65b47e5e56db9b39c805125c0a2f"
+  integrity sha512-aZcsPduJUyTtJ6n5FY14R418eNmg46TYyJIfkgA9tT/NCMxPVVGnwQiEGfUWxrU5agj5/VPpKRB0pI9zYKB/hQ==
 
 postcss@^8.4.18:
   version "8.4.18"
@@ -4953,12 +4953,12 @@ strip-markdown@^4.0.0:
   resolved "https://registry.npmjs.org/strip-markdown/-/strip-markdown-4.2.0.tgz"
   integrity sha512-sZYHI1KoKOOBfIq78R3E62NHg7kk6aKtZSqiH7wWxFB6Ak6PTZe4N88aJnzjV00Lbfw91oyLpy3baYfTTqNYBA==
 
-subsocial-query1@^1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/subsocial-query1/-/subsocial-query1-1.0.9.tgz#f94868c432c64aedcceab018b6ca04f884341a02"
-  integrity sha512-mYt8hVISdcfLcrJR7mjfqOtaZ0SBo/l3h3LRCO7toB/R+4fybn2Vv3jebWWY6obad16YO6cN3FmZoPX8nzaLDg==
+subsocial-query1@^1.0.11:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/subsocial-query1/-/subsocial-query1-1.0.11.tgz#c0724b7100b7e5d91e987b18d64588bc5efb89dc"
+  integrity sha512-t/iLTANvCNL7J7zKLhIqwfFCnweoo+CUBjZWL7ENAMZCCNndjSFtXNCydshDLyBNBPFxWBVM6yrvFlxO2ETPDQ==
   dependencies:
-    pool-query "^1.1.6"
+    pool-query "^1.1.9"
 
 supports-color@^5.3.0:
   version "5.5.0"

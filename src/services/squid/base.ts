@@ -3,16 +3,16 @@ import { mergeQueryConfig, QueryConfig, queryWrapper } from 'subsocial-query1'
 
 export type SquidParam<T> = { data: T }
 
-export function useSquidQuery<ReturnValue, Params>(
-  params: { key: string; data: Params | null },
-  func: (data: SquidParam<Params>) => Promise<ReturnValue>,
+export function useSquidQuery<ReturnValue, Data>(
+  params: { key: string; data: Data | null },
+  func: (data: SquidParam<Data>) => Promise<ReturnValue>,
   config?: QueryConfig<any, any>,
-  defaultConfig?: QueryConfig<ReturnValue, Params>
+  defaultConfig?: QueryConfig<ReturnValue, Data>
 ) {
   const mergedConfig = mergeQueryConfig(config, defaultConfig)
   return useQuery(
     [params.key, params.data],
-    queryWrapper(func, () => Promise.resolve()),
+    queryWrapper(func, async () => null),
     mergedConfig
   )
 }
