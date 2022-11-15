@@ -1,7 +1,7 @@
 import { request } from 'graphql-request'
 import { poolQuery } from 'subsocial-query1'
 import { GetPostData } from '../types'
-import * as q from './gql'
+import * as q from './templates'
 
 type SquidParam<T> = { data: T }
 
